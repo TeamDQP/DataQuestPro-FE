@@ -1,0 +1,26 @@
+<!-- {% extends 'base.html' %} {% block content %} -->
+<h1>설문조사 목록</h1>
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>제목</th>
+                <th>작성일</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- {% for survey in survey_list %} -->
+            <tr>
+                <td>
+                    <a href="{% url 'survey-detail' survey.pk %}">
+                        {{ survey.title }}
+                    </a>
+                </td>
+                <td>{{ survey.creation_date }}</td>
+            </tr>
+            <!-- {% endfor %} -->
+        </tbody>
+    </table>
+    <button class="search_button">카테고리 검색</button>
+</div>
+<!-- {% endblock %} -->
