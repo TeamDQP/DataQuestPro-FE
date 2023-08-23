@@ -6,6 +6,12 @@ html {
     padding: 0;
 }
 
+.main_contents {
+    padding: 0 10%;
+    min-height: 100vh;
+    background-color: #f0f8ff;
+}
+
 #main_contents {
     padding: 0 10%;
     min-height: 100vh;
