@@ -6,12 +6,6 @@ html {
     padding: 0;
 }
 
-.main_contents {
-    padding: 0 10%;
-    min-height: 100vh;
-    background-color: #f0f8ff;
-}
-
 #main_contents {
     padding: 0 10%;
     min-height: 100vh;
@@ -36,10 +30,14 @@ html {
 h1 {
     font-size: 70px;
     margin-bottom: 50px;
+    font-family: 'Anton', sans-serif;
+    font-family: 'Black Han Sans', sans-serif;
+    color: #262699;
 }
 
 .instructions {
     font-size: 30px;
+    white-space: nowrap;
 }
 
 .main_img {
@@ -113,55 +111,4 @@ footer span {
     padding-left: 5%;
 }
 
-@media (max-width: 1500px) {
-    h1 {
-        font-size: 45px;
-    }
-
-    .instructions {
-        font-size: 20px;
-    }
-
-    .wrapper {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .main {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 5%;
-    }
-
-    .main_img {
-        width: 500px;
-        height: auto;
-        margin: 5%;
-    }
-
-    .about_title {
-        padding-top: 5%;
-        font-size: 24px;
-    }
-
-    .about_img {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .about_img img {
-        margin: 5% 0;
-    }
-
-    .img_container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .img_text {
-        text-align: center;
-        margin: 10%;
-    }
-}
+/* 모바일 */

@@ -1,0 +1,44 @@
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f8ff;
+    margin: 0;
+}
+
+.custom-h1 {
+    font-family: 'Anton', sans-serif;
+}
+
+.input-container {
+    position: relative;
+    display: flex;
+}
+
+.nickname-input {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.duplicate-check-btn {
+    margin-left: auto;
+    white-space: nowrap;
+}
+
+.form-control {
+    min-width: 300px;
+}
+
+.form-signin {
+    width: 450px;
+    min-width: 300px;
+}

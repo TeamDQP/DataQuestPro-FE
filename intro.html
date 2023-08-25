@@ -1,11 +1,25 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ko">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>DataQuestPro</title>
-        <link rel="stylesheet" href="./css/reset.css" />
-        <link rel="stylesheet" href="./css/style.css" />
+        <!-- bootstrap -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="{% static 'style.css' %}" />
+        <!-- google font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Anton&family=Black+Han+Sans&display=swap"
+            rel="stylesheet"
+        />
     </head>
     <body>
         <section id="main_contents">
@@ -20,12 +34,16 @@
                     <button
                         class="w-btn w-btn-gra2"
                         type="button"
-                        onclick="goToSurveyList();"
+                        onclick="goTologin();"
                     >
                         시작하기!
                     </button>
                 </div>
-                <img src="static/main.jpg" alt="" class="main_img" />
+                <img
+                    src="{% static 'img/main.jpg' %}"
+                    alt=""
+                    class="main_img"
+                />
             </div>
         </section>
         <section id="sub_contents">
@@ -34,11 +52,11 @@
             </div>
             <div class="about_img">
                 <div class="img_container">
-                    <img src="static/survey_img1.jpg" alt="" />
+                    <img src="{% static 'img/survey_img1.jpg' %}" alt="" />
                     <span class="img_text">척도형</span>
                 </div>
                 <div class="img_container">
-                    <img src="static/survey_img2.jpg" alt="" />
+                    <img src="{% static 'img/survey_img2.jpg' %}" alt="" />
                     <span class="img_text">서술형</span>
                 </div>
             </div>
@@ -49,6 +67,11 @@
             <span>멤버 : 권순세, 송주헌, 양진우, 최익준, 김현중</span>
             <span>by Ormi</span>
         </footer>
-        <script src="/js/intro.js"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+            crossorigin="anonymous"
+        ></script>
+        <script src="{% static 'js/intro.js' %}"></script>
     </body>
 </html>
