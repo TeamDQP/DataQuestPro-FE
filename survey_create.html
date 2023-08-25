@@ -85,6 +85,28 @@
     Sortable.create(questionsContainer, {
         animation: 150, // 드래그 애니메이션 지속 시간 (밀리초)
     });
+    function addDeleteQuestionButton(questionElement) {
+        const deleteQuestionBtn = document.createElement('button');
+        deleteQuestionBtn.innerHTML = '질문 삭제';
+        deleteQuestionBtn.className = 'btn btn-sm btn-danger mt-2';
+        questionElement.appendChild(deleteQuestionBtn);
+
+        deleteQuestionBtn.addEventListener('click', () => {
+            questionsContainer.removeChild(questionElement);
+        });
+    }
+
+    function addDeleteAnswerButton(answerElement, questionCounter) {
+        const deleteAnswerBtn = document.createElement('button');
+        deleteAnswerBtn.innerHTML = '답변 삭제';
+        deleteAnswerBtn.className = 'btn btn-sm btn-danger ml-2';
+        answerElement.appendChild(deleteAnswerBtn);
+
+        deleteAnswerBtn.addEventListener('click', () => {
+            const answersContainer = document.getElementById(`answers_${questionCounter}`);
+            answersContainer.removeChild(answerElement);
+        });
+    }
 
     addQuestionBtn.addEventListener('click', () => {
         const questionHtml = `
@@ -123,20 +145,26 @@
 
         const answersContainer = document.getElementById(`answers_${questionCounter}`);
         addAnswerBtn.addEventListener('click', () => {
-            const answerHtml = `
-                <div class="form-group">
-                    <label for="answer_${questionCounter}_${answerCounter}">답변 내용</label>
-                    <input type="text" class="form-control answers" id="answer" name="answer" required>
-                </div>
-            `;
+            const currentQuestionCounter = questionCounter - 1; // 이전 질문의 questionCounter 값
+            const currentAnswersContainer = document.getElementById(`answers_${currentQuestionCounter}`);
+            
+            if (currentAnswersContainer) {
+                const answerHtml = `
+                    <div class="form-group">
+                        <label for="answer_${currentQuestionCounter}_${answerCounter}">답변 내용</label>
+                        <input type="text" class="form-control answers" id="answer" name="answer" required>
+                    </div>
+                `;
 
-            const answerElement = document.createElement('div');
-            answerElement.innerHTML = answerHtml;
-            answersContainer.appendChild(answerElement);
+                const answerElement = document.createElement('div');
+                answerElement.innerHTML = answerHtml;
+                currentAnswersContainer.appendChild(answerElement);
 
-            answerCounter++;
+                addDeleteAnswerButton(answerElement, currentQuestionCounter);
+                answerCounter++;
+            }
         });
-
+        addDeleteQuestionButton(questionElement);
         questionCounter++;
     });
     

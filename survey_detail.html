@@ -69,10 +69,8 @@
                             <p>필수: ${question.is_required ? '필수' : '선택'}</p>
                             <div>
                                 ${question.answer_options.map((answer, index) => `
-                                    <label>
-                                        <input type="radio" name="question${question.id}" value="${answer}" ${index === 0 ? 'checked' : ''}>
-                                        ${answer}
-                                    </label>
+                                    <input type="radio" id="question${question.id}_${index}" name="question${question.id}" value="${answer}">
+                                    <label for="question${question.id}_${index}">${answer}</label>
                                     <br>
                                 `).join('')}
                             </div>
@@ -91,7 +89,7 @@
     fetchSurveyDetails();
 
     answerFormContainer.addEventListener('click', async function(event) {
-        event.preventDefault();
+        //event.preventDefault();
 
         if (event.target.tagName === 'BUTTON' && event.target.getAttribute('type') === 'submit') {
             const selectedAnswers = [];
