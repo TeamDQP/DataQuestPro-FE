@@ -1,25 +1,41 @@
-document
-    .getElementById('signup-form')
-    .addEventListener('submit', function (event) {
-        const password = document.getElementById('password').value;
-        const passwordConfirm =
-            document.getElementById('password_confirm').value;
-        const errorMessage = document.getElementById('password_error');
+const signupForm = document.getElementById('signup-form');
+signupForm.addEventListener('submit', function (event) {
+    event.preventDefault();
 
-        if (password !== passwordConfirm) {
-            event.preventDefault();
+    const formData = new FormData(signupForm);
+    const email = formData.get('email');
+    const password = formData.get('password');
+    const name = formData.get('name');
+    const email_opt_in = formData.get('email_opt_in') === 'agree';
 
-            if (!errorMessage) {
-                const error = document.createElement('p');
-                error.id = 'password_error';
-                error.className = 'error';
-                error.innerText = '비밀번호가 일치하지 않습니다.';
-                document.getElementById('password_confirm').after(error);
+    fetch('http://localhost:8000/user/register/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            name: name,
+            email: email,
+            password: password,
+            email_opt_in: email_opt_in,
+        }),
+    })
+        .then((response) => {
+            if (response.ok) {
+                response.json();
+            } else {
+                throw new Error('회원가입 실패');
             }
-        } else if (errorMessage) {
-            errorMessage.remove();
-        }
-    });
+        })
+
+        .then((data) => {
+            console.log(data);
+            window.location.href = '/login';
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+});
 
 // 중복 닉네임 확인
 function checkNickname() {
@@ -55,26 +71,26 @@ function validateForm() {
     return true;
 }
 
-submitButton.addEventListener('click', submitForm);
+// submitButton.addEventListener('click', submitForm);
 
-function submitForm(event) {
-    event.preventDefault();
+// function submitForm(event) {
+//     event.preventDefault();
 
-    const form = event.target.closest('form');
-    const formData = new FormData(form);
+//     const form = event.target.closest('form');
+//     const formData = new FormData(form);
 
-    fetch('/user/register/', {
-        method: 'POST',
-        body: formData,
-    }).then((response) => {
-        if (response.status === 201) {
-            location.href = '/login';
-        } else {
-            alert('회원가입에 실패하였습니다. 다시 시도해주세요.');
-        }
-    });
-}
+//     fetch('/user/register/', {
+//         method: 'POST',
+//         body: formData,
+//     }).then((response) => {
+//         if (response.status === 201) {
+//             location.href = '/login';
+//         } else {
+//             alert('회원가입에 실패하였습니다. 다시 시도해주세요.');
+//         }
+//     });
+// }
 
-// 버튼 요소 찾기 및 이벤트 리스너 추가
-const submitButton = document.getElementById('submitBtn');
-submitButton.addEventListener('click', submitForm);
+// // 버튼 요소 찾기 및 이벤트 리스너 추가
+// const submitButton = document.getElementById('submitBtn');
+// submitButton.addEventListener('click', submitForm);

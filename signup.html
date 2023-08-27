@@ -1,4 +1,3 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -19,7 +18,7 @@
             rel="stylesheet"
         />
         <!-- css 연결 -->
-        <link rel="stylesheet" href="{% static 'serveys/css/signup.css' %}" />
+        <link rel="stylesheet" href="./css/signup.css" />
         <title>회원가입</title>
     </head>
     <body>
@@ -35,7 +34,7 @@
                         class="form-control"
                         id="floatingInput"
                         placeholder="name@example.com"
-                        name="username"
+                        name="name"
                     />
                     <label for="floatingInput">이름</label>
                 </div>
@@ -45,7 +44,7 @@
                         class="form-control"
                         id="floatingInput"
                         placeholder="name@example.com"
-                        name="useremail"
+                        name="email"
                     />
                     <label for="floatingInput">이메일</label>
                 </div>
@@ -68,23 +67,15 @@
                     />
                     <label for="password_confirm">비밀번호 확인</label>
                 </div>
-                <div class="form-floating input-container">
-                    <input
-                        type="text"
-                        class="form-control nickname-input"
-                        id="nickname"
-                        placeholder="닉네임"
-                        name="nickname"
-                    />
-                    <label for="nickname">닉네임</label>
 
-                    <button
-                        class="btn btn-primary duplicate-check-btn"
-                        type="button"
-                        onclick="checkNickname();"
-                    >
-                        중복확인
-                    </button>
+                <div class="eamil_opt_in">
+                    이메일 수신 동의<br />
+                    <input type="radio" name="eamil_opt_in" value="agree" />동의
+                    <input
+                        type="radio"
+                        name="eamil_opt_in"
+                        value="notagree"
+                    />비동의
                 </div>
                 <button class="btn btn-primary" type="submit" id="submitBtn">
                     회원가입
@@ -99,6 +90,6 @@
             crossorigin="anonymous"
         ></script>
         <!-- js 연결 -->
-        <script src="{% static 'serveys/js/signup.js' %}"></script>
+        <script src="./js/signup.js"></script>
     </body>
 </html>
