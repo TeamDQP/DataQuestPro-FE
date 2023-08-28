@@ -1,5 +1,5 @@
 function goTologin() {
-    location.href = '/login';
+    location.href = '/login.html';
 }
 
 new fullpage('#fullpage', {
