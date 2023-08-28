@@ -26,7 +26,7 @@ loginForm.addEventListener('submit', function (event) {
         .then((data) => {
             console.log(data);
             localStorage.setItem('token', data.token);
-            window.location.href = '/survey_list.html';
+            window.location.href = './html/survey_list.html';
             console.log('success');
         })
         .catch((error) => {
@@ -39,15 +39,5 @@ loginForm.addEventListener('submit', function (event) {
 const signupButton = document.querySelector('.signup-btn');
 
 signupButton.addEventListener('click', function () {
-    location.href = '/signup.html';
-});
-
-const token = localStorage.getItem('token');
-
-fetch('http://localhost:8000/some/protected/route', {
-    method: 'GET',
-    headers: {
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json',
-    },
+    location.href = '/html/signup.html';
 });
