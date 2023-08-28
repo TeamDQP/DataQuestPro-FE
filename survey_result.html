@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Survey Result</title>
+</head>
+<body>
+    <h1>Survey Result</h1>
+    
+    <div id="surveyResult"></div>
+    <canvas id="resultChart" width="400" height="400"></canvas>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const currentUrl = window.location.href;
+
+    // URL 파라미터 추출 함수
+        function getParameterByName(name) {
+            name = name.replace(/[\[\]]/g, '\\$&');
+            const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
+            const results = regex.exec(currentUrl);
+            
+            if (!results) return null;
+            if (!results[2]) return '';
+            
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+        const idParam = getParameterByName('id');
+
+        const BaseUrl = 'http://127.0.0.1:8000';
+        const surveyId = idParam;
+        const surveyResultDiv = document.getElementById('surveyResult');
+
+        fetch(BaseUrl+`/surveys/survey/result/${surveyId}`) // 위에서 등록한 URL로 요청을 보냅니다.
+            .then(response => response.json()) // 응답 데이터를 JSON 형태로 파싱합니다.
+            .then(data => {
+                // Organize the data into a dictionary with questions as keys and arrays of answer counts as values
+                const questionData = {};
+                data.forEach(item => {
+                    const questionText = item.question_text;
+                    const answerText = item.answer_text;
+                    const count = item.count;
+                    
+                    if (!questionData[questionText]) {
+                        questionData[questionText] = [];
+                    }
+                    
+                    questionData[questionText].push({ answerText, count });
+                });
+
+                // Loop through the questionData dictionary and create a chart for each question
+                for (const questionText in questionData) {
+                    const questionChartCanvas = document.createElement('canvas');
+                    const questionChartDiv = document.createElement('div');
+                    questionChartDiv.appendChild(questionChartCanvas);
+                    surveyResultDiv.appendChild(questionChartDiv);
+
+                    const answerCounts = questionData[questionText];
+                    const labels = answerCounts.map(item => item.answerText);
+                    const counts = answerCounts.map(item => item.count);
+
+                    const questionChart = new Chart(questionChartCanvas, {
+                        type: 'bar',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: '답변 카운트',
+                                data: counts,
+                                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                borderColor: 'rgba(75, 192, 192, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            responsive: false,
+                            maintainAspectRatio: false,
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+
+                    // 차트 위에 질문 텍스트를 제목으로 추가합니다.
+                    const chartTitle = document.createElement('h3');
+                    chartTitle.textContent = `질문: ${questionText}`;
+                    questionChartDiv.insertBefore(chartTitle, questionChartCanvas);
+                }
+
+                // ... Rest of your JavaScript code ...
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                surveyResultDiv.innerHTML = 'An error occurred while fetching data.';
+            });
+    </script>
+</body>
+</html>
