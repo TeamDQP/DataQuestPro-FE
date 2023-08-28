@@ -6,7 +6,7 @@ signupForm.addEventListener('submit', function (event) {
     const email = formData.get('email');
     const password = formData.get('password');
     const name = formData.get('name');
-    const email_opt_in = formData.get('email_opt_in') === 'agree';
+    const email_opt_in = formData.get('email_opt_in');
 
     fetch('http://localhost:8000/user/register/', {
         method: 'POST',
@@ -34,7 +34,7 @@ signupForm.addEventListener('submit', function (event) {
         })
         .catch((error) => {
             console.error('Error:', error);
-            alert('중복된 이메일 입니다.');
+            alert('회원가입 실패');
         });
 });
 

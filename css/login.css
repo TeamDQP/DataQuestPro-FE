@@ -22,14 +22,14 @@ body {
     color: #262699;
 }
 
-#floatingPassword {
+#password {
     margin-top: 2rem;
 }
 
 .login-button {
-    margin-top: 1rem; /* 원하는 공간크기에 따라 이 값을 조절하세요. */
+    margin-top: 1rem;
 }
 
 .form-control.custom-input {
-    width: 450px; /* 가로 폭을 원하는 크기로 조절하세요. */
+    width: 450px;
 }
