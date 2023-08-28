@@ -6,6 +6,7 @@
     <title>설문조사 상세</title>
     <!-- 부트스트랩 CSS 링크 -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
 </head>
 <body>
 
@@ -60,6 +61,8 @@
             const surveyHtml = `
                 <h2>${surveyData.survey.title}</h2>
                 <p>${surveyData.survey.intro}</p>
+                <p>${surveyData.category}</p>
+                <p>${surveyData.tags}</p>
                 <h3>질문 목록</h3>
                 <ul>
                     ${surveyData.questions.map(question => `

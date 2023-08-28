@@ -84,8 +84,8 @@
         if (event.target.classList.contains('delete-btn')) {
             const surveyId = event.target.getAttribute('data-id');
             if (confirm('설문조사를 삭제하시겠습니까?')) {
-                fetch(BaseUrl + '/surveys/survey/' + surveyId, {
-                    method: 'DELETE',
+                fetch(BaseUrl + '/surveys/survey/delete/' + surveyId, {
+                    method: 'POST',
                 })
                     .then(response => response.json())
                     .then(data => {
