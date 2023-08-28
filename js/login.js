@@ -18,13 +18,14 @@ loginForm.addEventListener('submit', function (event) {
     })
         .then((response) => {
             if (response.ok) {
-                response.json();
+                return response.json();
             } else {
                 throw new Error('로그인 실패');
             }
         })
         .then((data) => {
             console.log(data);
+            localStorage.setItem('token', data.token);
             window.location.href = '/survey_list.html';
             console.log('success');
         })
@@ -39,4 +40,14 @@ const signupButton = document.querySelector('.signup-btn');
 
 signupButton.addEventListener('click', function () {
     location.href = '/signup.html';
+});
+
+const token = localStorage.getItem('token');
+
+fetch('http://localhost:8000/some/protected/route', {
+    method: 'GET',
+    headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+    },
 });

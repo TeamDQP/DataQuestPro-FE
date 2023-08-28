@@ -6,6 +6,17 @@
     user-select: none;
 }
 
+.header a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    font-size: 2rem;
+    font-family: 'Anton', sans-serif;
+    font-family: 'Black Han Sans', sans-serif;
+    text-decoration: none;
+}
+
 body {
     height: 100vh;
     display: flex;
@@ -27,7 +38,7 @@ body {
 }
 
 .login-button {
-    margin-top: 1rem;
+    margin-top: 2rem;
 }
 
 .form-control.custom-input {
