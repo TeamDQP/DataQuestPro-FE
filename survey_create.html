@@ -180,7 +180,6 @@
 
             // 질문 데이터 수집
             sortedQuestionElements.forEach((questionElement, index) => {
-                console.log(questionElement)
                 const questionData = {
                     question_text: questionElement.querySelector('.question_text').value,
                     type: questionElement.querySelector('.question_type').value,
@@ -191,15 +190,16 @@
 
                 // 답변 데이터 수집
                 const answerInputs = questionElement.querySelectorAll('.answers');
-                console.log(answerInputs)
+                if (questionData.type === "scale" && answerInputs.length === 0) {
+                    alert(`Please answer the question: "${questionData.question_text}"`);
+                    return;
+                }
                 answerInputs.forEach(answerInput => {
-                    console.log(answerInput.value)
                     questionData.answers.push(answerInput.value);
                 });
 
                 questionsData.push(questionData);
             });
-
             // 폼 데이터 수집
             const formData = new FormData(surveyForm);
             
