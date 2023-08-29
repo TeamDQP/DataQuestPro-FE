@@ -6,8 +6,7 @@ html {
     padding: 0;
 }
 
-p,
-span {
+header {
     font-family: 'Anton', sans-serif;
     font-family: 'Black Han Sans', sans-serif;
     font-family: 'Poor Story', cursive;

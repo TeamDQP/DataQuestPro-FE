@@ -25,7 +25,7 @@ loginForm.addEventListener('submit', (event) => {
         .then((data) => {
             localStorage.setItem('token', data.token);
             console.log('data', data.access);
-            // window.location.href = '/html/survey_list.html';
+            window.location.href = './survey_list.html';
             console.log('success');
         })
         .catch((error) => {
@@ -35,7 +35,4 @@ loginForm.addEventListener('submit', (event) => {
 });
 
 // 회원가입버튼누르면 signup으로 이동
-signupButton.addEventListener(
-    'click',
-    () => (location.href = '/html/signup.html')
-);
+signupButton.addEventListener('click', () => (location.href = './signup.html'));
