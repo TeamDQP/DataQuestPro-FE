@@ -125,12 +125,12 @@
                                     ${
                                         question.type === 'scale'
                                             ? question.answer_options.map((answer, index) => `
-                                                <input type="radio" id="question${question.id}_${index}" name="question${question.id}" value="${answer}" ${question.is_required ? 'required' : ''}>
+                                                <input type="radio" id="question${question.id}_${index}" name="question${question.id}" value="${answer}" ${question.is_required ? 'required' : ''} ${question.user_answer_text === answer ? 'checked' : ''}>
                                                 <label for="question${question.id}_${index}">${answer}</label>
                                                 <br>
                                             `).join('')
                                             : question.type === 'open'
-                                            ? `<textarea class="answer-textarea" name="question${question.id}" ${question.is_required ? 'required' : ''}></textarea>`
+                                            ? `<textarea class="answer-textarea" name="question${question.id}" ${question.is_required ? 'required' : ''}>${question.user_answer_text}</textarea>`
                                             : ''
                                     }
                                 </div>
@@ -158,15 +158,41 @@
 
             // 필수 라디오 버튼 및 텍스트 영역 체크
             let inputsAreValid = true;
+            const radioGroups = {}; // 그룹화된 라디오 버튼을 저장할 객체
+
+            questionInputs.forEach(input => {
+                const groupName = input.name;
+
+                // 라디오 버튼 그룹이 없다면 초기화
+                if (!radioGroups[groupName]) {
+                    radioGroups[groupName] = [];
+                }
+
+                radioGroups[groupName].push(input);
+            });
+
+            // 라디오 버튼 그룹 별로 검사
+            for (const groupName in radioGroups) {
+                const group = radioGroups[groupName];
+                let isGroupChecked = false;
+
+                group.forEach(input => {
+                    if (input.checked) {
+                        isGroupChecked = true;
+                    }
+                });
+
+                if (!isGroupChecked) {
+                    const questionText = group[0].closest('.question-box').querySelector('p').textContent;
+                    alert(`Please answer the question: "${questionText}"`);
+                    inputsAreValid = false;
+                }
+            }
             questionInputs.forEach(input => {
                 const questionId = input.name.replace('question', '');
                 const answerValue = input.value;
-                const questionText = input.closest('.question-box').querySelector('p').textContent;
 
-                if (input.required && !input.checked) {
-                    alert(`Please answer the question: "${questionText}"`);
-                    inputsAreValid = false;
-                } else if (input.checked) {
+                if (input.checked) {
                     selectedAnswers.push({ question_id: questionId, answer_text: answerValue });
                 }
             });
