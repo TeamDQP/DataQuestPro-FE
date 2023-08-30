@@ -9,6 +9,11 @@ loginForm.addEventListener('submit', (event) => {
     const email = formData.get('email');
     const password = formData.get('password');
 
+    if (!email || !password) {
+        alert('이메일과 비밀번호를 모두 입력해주세요.');
+        return;
+    }
+
     fetch(BaseUrl + '/user/login/', {
         method: 'POST',
         headers: {
@@ -23,8 +28,12 @@ loginForm.addEventListener('submit', (event) => {
             return response.json();
         })
         .then((data) => {
-            localStorage.setItem('token', data.access);
-            window.location.href = './survey_list.html';
+            if (data.access && data.access !== 'undefined') {
+                localStorage.setItem('token', data.access);
+                window.location.href = './survey_list.html';
+            } else {
+                alert('로그인 실패: 잘못된 이메일 또는 비밀번호');
+            }
         })
         .catch((error) => {
             console.error('Error:', error);

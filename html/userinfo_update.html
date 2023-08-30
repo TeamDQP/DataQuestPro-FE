@@ -12,7 +12,7 @@
         <!-- Axios via CDN -->
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     </head>
-    <body onload="getUserinfo()">
+    <body>
         <div class="top_container">
             <div class="menu1">
                 <div class="left">
@@ -52,11 +52,31 @@
                             <li id="email_opt_in"></li>
                         </ul>
                     </div>
-                    <form action="" class="">
+                    <form action="" class="newuserinfoinput">
                         <label for="newname">새로운 이름</label>
-                        <input type="text" />
-                        <label for="newname">새로운 이메일</label>
-                        <label for="newname">이메일 수신동의여부재설정</label>
+                        <input type="text" id="newname" />
+                        <label for="newpassword">새로운 비밀번호</label>
+                        <input type="password" id="newpassword" />
+                        <label for="newpassword-confirm"
+                            >새로운 비밀번호 확인</label
+                        >
+                        <input type="password" id="newpassword-confirm" />
+                        <label for="newemail">새로운 이메일</label>
+                        <input type="email" id="newemail" />
+                        <div class="email_opt_in_setup">
+                            이메일 수신 동의 재설정
+                            <input
+                                type="radio"
+                                name="email_opt_in_setup"
+                                value="true"
+                            />동의
+                            <input
+                                type="radio"
+                                name="email_opt_in_setup"
+                                value="false"
+                            />비동의
+                        </div>
+                        <button type="submit">수정 완료</button>
                     </form>
                 </div>
             </div>
@@ -64,6 +84,6 @@
         <footer>
             <div></div>
         </footer>
-        <script src="../js/userinfo.js"></script>
+        <script src="../js/userinfo_update.js"></script>
     </body>
 </html>
