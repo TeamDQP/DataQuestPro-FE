@@ -10,7 +10,7 @@ signupForm.addEventListener('submit', function (event) {
     const name = formData.get('name');
     const email_opt_in = formData.get('email_opt_in');
 
-    fetch(BaseUrl + '/signup', {
+    fetch(BaseUrl + '/user/register/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

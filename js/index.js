@@ -1,13 +1,22 @@
+import { isTokenValid } from './utils.js';
+
 const startButton = document.getElementById('start-btn');
 
 startButton.addEventListener('click', function () {
     const token = localStorage.getItem('token');
 
-    if (token) {
-        window.location.href = './html/survey_list.html';
-    } else {
-        window.location.href = './html/login.html';
-    }
+    isTokenValid(token)
+        .then((isValid) => {
+            if (isValid) {
+                window.location.href = './html/survey_list.html';
+            } else {
+                window.location.href = './html/login.html';
+            }
+        })
+        .catch((error) => {
+            console.error(error);
+            alert('An error occurred while validating the token.');
+        });
 });
 
 window.addEventListener('wheel', function (e) {

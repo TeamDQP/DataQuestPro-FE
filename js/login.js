@@ -23,7 +23,7 @@ loginForm.addEventListener('submit', (event) => {
             return response.json();
         })
         .then((data) => {
-            localStorage.setItem('token', data.token);
+            localStorage.setItem('token', data.access);
             console.log('data', data.access);
             window.location.href = './survey_list.html';
             console.log('success');
