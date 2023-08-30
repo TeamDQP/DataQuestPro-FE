@@ -1,0 +1,42 @@
+ul, ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.question-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.answer-textarea {
+    width: 100%; /* textarea의 너비를 100%로 설정하여 부모 div에 맞춤 */
+    box-sizing: border-box; /* border와 padding을 포함한 크기 계산 */
+}
+.survey-header {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.survey-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.survey-intro {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.survey-intro-text {
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.survey-category {
+    font-size: 14px;
+    color: #777;
+    margin-top: 10px;
+}
