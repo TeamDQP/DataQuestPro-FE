@@ -6,6 +6,12 @@ html {
     padding: 0;
 }
 
+header {
+    font-family: 'Anton', sans-serif;
+    font-family: 'Black Han Sans', sans-serif;
+    font-family: 'Poor Story', cursive;
+}
+
 #main_contents {
     padding: 0 10%;
     min-height: 100vh;

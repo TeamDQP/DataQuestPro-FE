@@ -6,6 +6,17 @@
     user-select: none;
 }
 
+.header a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    font-size: 2rem;
+    font-family: 'Anton', sans-serif;
+    font-family: 'Black Han Sans', sans-serif;
+    text-decoration: none;
+}
+
 body {
     height: 100vh;
     display: flex;
@@ -22,14 +33,18 @@ body {
     color: #262699;
 }
 
-#floatingPassword {
+#password {
     margin-top: 2rem;
 }
 
 .login-button {
-    margin-top: 1rem; /* 원하는 공간크기에 따라 이 값을 조절하세요. */
+    margin-top: 2rem;
 }
 
 .form-control.custom-input {
-    width: 450px; /* 가로 폭을 원하는 크기로 조절하세요. */
+    width: 450px;
+}
+
+.loginbackgroundimg {
+    width: 400px;
 }
