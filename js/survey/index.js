@@ -1,3 +1,5 @@
+const token = localStorage.getItem('token');
+
 const currentUrl = window.location.href;
 
 // URL 파라미터 추출 함수

@@ -3,7 +3,10 @@ const categoryFilter = document.getElementById('categoryFilter');
 
 fetch(BaseUrl + '/surveys/survey/', {
     method: 'GET',
-})
+    headers: {
+        Authorization: `Bearer ${token}`, // Add the token to the request headers
+    },
+    })
     .then(response => response.json())
     .then(data => {
 
@@ -51,7 +54,7 @@ function generateSurveyCard(survey) {
                     <p class="card-text">태그: ${survey.tags.join(', ')}</p>
                     
                     ${survey.is_done
-                        ? '<a href="./other_link.html" class="btn btn-secondary">다른 링크</a>'
+                        ? '<a href="./survey_result.html?id=${survey.id}" class="btn btn-secondary">결과</a>'
                         : `<a href="./survey_detail.html?id=${survey.id}" class="btn btn-primary">시작하기</a>`}
                     
                     <button class="btn btn-danger delete-btn" data-id="${survey.id}">삭제</button>

@@ -72,8 +72,12 @@ function updateSelectedTags() {
 
 async function fetchSurveyDetails() {
     try {
-        const surveyData = await fetchJSON(`${BaseUrl}/surveys/survey/update/${surveyId}`);
-
+        const response = await fetch(`${BaseUrl}/surveys/survey/update/${surveyId}`, {
+            headers: {
+                Authorization: `Bearer ${token}`, // Add the token to the request headers
+            },
+        });
+        const surveyData = await response.json();
         const titleInput = document.getElementById('title');
         const introTextarea = document.getElementById('intro');
         const categorySelect = document.getElementById('categorySelect');
@@ -224,17 +228,29 @@ async function handleFormSubmit(event) {
             tags: selectedTags, // 선택한 태그 추가
         };
         // 서버로 데이터 전송
-        const response = await fetch(BaseUrl + `/surveys/survey/update/${surveyId}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(postData)
-        });
+        try {
+            const response = await fetch(BaseUrl + `/surveys/survey/update/${surveyId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+                body: JSON.stringify(postData)
+            });
 
-        const data = await response.json();
-        
+            const data = await response.json();
+            if (response.ok) {
+                alert('설문조사 작성이 완료되었습니다.');
+                
+                window.location.href = './survey_list.html';
+            } else {
+                console.error('데이터 전송 실패:', response.status);
+            }
+        } catch (error) {
+            console.error('에러 발생:', error);
+        }
         // 생성 완료 시 처리 로직 추가
+
 
     } catch (error) {
         console.error('Error creating survey:', error);
