@@ -24,9 +24,7 @@ loginForm.addEventListener('submit', (event) => {
         })
         .then((data) => {
             localStorage.setItem('token', data.access);
-            console.log('data', data.access);
             window.location.href = './survey_list.html';
-            console.log('success');
         })
         .catch((error) => {
             console.error('Error:', error);
