@@ -83,7 +83,11 @@
                         questionData[questionText] = [];
                     }
                     
-                    questionData[questionText].push({ answerText, count });
+                    if (count !== undefined) {
+                        questionData[questionText].push({ answerText, count });
+                    } else {
+                        questionData[questionText].push({ answerText });
+                    }
                 });
 
                 // Loop through the questionData dictionary and create a chart for each question
@@ -99,38 +103,52 @@
 
                     const answerCounts = questionData[questionText];
                     const labels = answerCounts.map(item => item.answerText);
-                    const counts = answerCounts.map(item => item.count);
+                    if (answerCounts[0].count !== undefined) {
+                        const counts = answerCounts.map(item => item.count);
 
-                    const questionChart = new Chart(questionChartCanvas, {
-                        type: 'bar',
-                        data: {
-                            labels: labels,
-                            datasets: [{
-                                label: '답변 카운트',
-                                data: counts,
-                                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                                borderColor: 'rgba(75, 192, 192, 1)',
-                                borderWidth: 1
-                            }]
-                        },
-                        options: {
-                            responsive: false,
-                            maintainAspectRatio: false,
-                            scales: {
-                                y: {
-                                    beginAtZero: true
+                        const questionChart = new Chart(questionChartCanvas, {
+                            type: 'bar',
+                            data: {
+                                labels: labels,
+                                datasets: [{
+                                    label: '답변 카운트',
+                                    data: counts,
+                                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                    borderColor: 'rgba(75, 192, 192, 1)',
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                responsive: false,
+                                maintainAspectRatio: false,
+                                scales: {
+                                    y: {
+                                        beginAtZero: true
+                                    }
                                 }
                             }
-                        }
-                    });
+                        });
 
-                    // 차트 위에 질문 텍스트를 제목으로 추가합니다.
-                    const chartTitle = document.createElement('h3');
-                    chartTitle.textContent = `질문: ${questionText}`;
-                    questionChartDiv.insertBefore(chartTitle, questionChartCanvas);
+                        // 차트 위에 질문 텍스트를 제목으로 추가합니다.
+                        const chartTitle = document.createElement('h3');
+                        chartTitle.textContent = `질문: ${questionText}`;
+                        questionChartDiv.insertBefore(chartTitle, questionChartCanvas);
+                    } else {
+                        questionChartDiv.removeChild(questionChartCanvas);
+
+                        const answerTextList = document.createElement('ul');
+                        answerCounts.forEach(item => {
+                            const answerTextItem = document.createElement('li');
+                            answerTextItem.textContent = item.answerText;
+                            answerTextList.appendChild(answerTextItem);
+                        });
+                        const Title = document.createElement('h3');
+                        Title.textContent = `질문: ${questionText}`;
+                        questionChartDiv.appendChild(Title);
+                        questionChartDiv.appendChild(answerTextList);
+                    }
                 }
 
-                // ... Rest of your JavaScript code ...
             })
             .catch(error => {
                 console.error('Error:', error);
