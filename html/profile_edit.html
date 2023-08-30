@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <!-- Axios via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body onload="getProfile()">
+    <header></header>
+    <main>
+        <div class="display-img"></div>
+        <form id="profile-img-form" method="post" enctype="multipart/form-data">
+            <label for="image">Select an image:</label>
+            <input type="file" id="image" name="profileimage" accept="image/*">
+            <br><br>
+            <label for="username">nickname:</label>
+            <input type="text" id="username" for="username" name="username">
+           
+            <br><br>
+            <input type="submit" value="submit">
+        </form>
+    </main>
+    <footer></footer>
+    <script src="../js/profileupdate.js"></script>
+</body>
+</html>
