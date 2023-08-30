@@ -2,12 +2,19 @@ const startButton = document.getElementById('start-btn');
 
 startButton.addEventListener('click', function () {
     const token = localStorage.getItem('token');
-
-    if (token) {
+    axios.get('http://127.0.0.1:8000/user/validate-jwt/', {
+        headers: {
+            Authorization: `Bearer ${token}`, // Add the token to the request headers
+        },
+    })
+    .then(response => {
+        // handle success
         window.location.href = './html/survey_list.html';
-    } else {
+    })
+    .catch(error => {
+        // handle error
         window.location.href = './html/login.html';
-    }
+    })
 });
 
 window.addEventListener('wheel', function (e) {

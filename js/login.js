@@ -19,19 +19,17 @@ loginForm.addEventListener('submit', (event) => {
             password,
         }),
     })
-        .then((response) => {
+    .then((response) => {
             return response.json();
-        })
-        .then((data) => {
-            localStorage.setItem('token', data.token);
-            console.log('data', data.access);
+    })
+    .then((data) => {
+            localStorage.setItem('token', data.access);
             window.location.href = './survey_list.html';
-            console.log('success');
-        })
-        .catch((error) => {
+    })
+    .catch((error) => {
             console.error('Error:', error);
             alert(`로그인 실패: ${error.message}`);
-        });
+    });
 });
 
 // 회원가입버튼누르면 signup으로 이동
