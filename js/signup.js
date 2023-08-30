@@ -1,4 +1,6 @@
+const BaseUrl = 'http://127.0.0.1:8000';
 const signupForm = document.getElementById('signup-form');
+
 signupForm.addEventListener('submit', function (event) {
     event.preventDefault();
 
@@ -6,9 +8,9 @@ signupForm.addEventListener('submit', function (event) {
     const email = formData.get('email');
     const password = formData.get('password');
     const name = formData.get('name');
-    const email_opt_in = formData.get('email_opt_in') === 'agree';
+    const email_opt_in = formData.get('email_opt_in');
 
-    fetch('http://localhost:8000/user/register/', {
+    fetch(BaseUrl + '/signup', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -21,20 +23,19 @@ signupForm.addEventListener('submit', function (event) {
         }),
     })
         .then((response) => {
-            if (response.ok) {
-                return response.json();
-            } else {
+            if (!response.ok) {
                 throw new Error('회원가입 실패');
             }
+            return response.json();
         })
 
         .then((data) => {
             console.log(data);
-            window.location.href = '/login.html';
+            window.location.href = '/html/login.html';
         })
         .catch((error) => {
             console.error('Error:', error);
-            alert('중복된 이메일 입니다.');
+            alert('회원가입 실패');
         });
 });
 
