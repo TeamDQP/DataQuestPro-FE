@@ -2,7 +2,11 @@ const answerFormContainer = document.getElementById('answerForm');  // 이 부�
 
 async function fetchSurveyDetails() {
     try {
-        const response = await fetch(`${BaseUrl}/surveys/survey/detail/${surveyId}`);
+        const response = await fetch(`${BaseUrl}/surveys/survey/detail/${surveyId}`, {
+            headers: {
+                Authorization: `Bearer ${token}`, // Add the token to the request headers
+            },
+        });
         const surveyData = await response.json();
 
         // Render survey details
@@ -124,6 +128,7 @@ answerFormContainer.addEventListener('click', async function(event) {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({
                     survey_id: surveyId,
@@ -132,7 +137,13 @@ answerFormContainer.addEventListener('click', async function(event) {
             });
 
             const responseData = await response.json();
-            console.log(responseData.message);  // Display server response
+            if (response.ok) {
+                alert('설문조사 작성이 완료되었습니다.');
+                
+                window.location.href = './survey_list.html';
+            } else {
+                console.error('데이터 전송 실패:', response.status);
+            }
         } catch (error) {
             console.error('Error submitting answers:', error);
         }

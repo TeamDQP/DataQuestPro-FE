@@ -6,7 +6,11 @@ linkElement.setAttribute('href', linkHref + '?id=' + idParam);
 
 const surveyResultDiv = document.getElementById('surveyResult');
 
-fetch(BaseUrl+`/surveys/survey/result/${surveyId}`) // 위에서 등록한 URL로 요청을 보냅니다.
+fetch(`${BaseUrl}/surveys/survey/result/${surveyId}`, {
+        headers: {
+            Authorization: `Bearer ${token}`, // Add the token to the request headers
+        },
+    })
     .then(response => response.json()) // 응답 데이터를 JSON 형태로 파싱합니다.
     .then(data => {
         // Organize the data into a dictionary with questions as keys and arrays of answer counts as values
