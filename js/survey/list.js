@@ -70,6 +70,9 @@ function filterSurveysByCategory(categoryId) {
     surveyListContainer.innerHTML = ''; // Clear previous survey cards
     fetch(BaseUrl + '/surveys/survey/?category=' + categoryId, {
         method: 'GET',
+        headers: {
+            Authorization: `Bearer ${token}`, // Add the token to the request headers
+        },
     })
         .then(response => response.json())
         .then(data => {
