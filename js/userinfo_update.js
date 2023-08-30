@@ -1,8 +1,8 @@
 const token = localStorage.getItem('token');
 
-// if (!token) {
-//     alert('토큰이 유효하지 않습니다. 다시 로그인해주세요.');
-// }
+if (!token) {
+    alert('토큰이 유효하지 않습니다. 다시 로그인해주세요.');
+}
 
 const userInfoForm = document.querySelector('.newuserinfoinput');
 userInfoForm.addEventListener('submit', function (event) {
@@ -55,7 +55,6 @@ userInfoForm.addEventListener('submit', function (event) {
         });
 });
 
-// 비밀번호 확인
 // 비밀번호 확인
 function validateForm() {
     var passwordInputField = document.getElementById('newpassword');
