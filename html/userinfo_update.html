@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>DataQuestPro</title>
+        <link rel="stylesheet" type="text/css" href="../css/profilepage.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        />
+        <!-- Axios via CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    </head>
+    <body onload="getUserinfo()">
+        <div class="top_container">
+            <div class="menu1">
+                <div class="left">
+                    <p><img src="" alt="logo" width="100px" /></p>
+                    <div class="search">
+                        <i class="fa-solid fa-magnifying-glass fa-2x"></i>
+                        <input class="input" type="text" placeholder="검색" />
+                    </div>
+                </div>
+                <div class="right">
+                    <p><i class="fa-regular fa-user fa-xl"></i></p>
+                    <!-- 계정 아이콘 누르면 프로필 페이지로 이동 가능하게 -->
+                </div>
+            </div>
+        </div>
+        <div class="bottom_container">
+            <div class="menu2">
+                <!-- 각 메뉴마다 아이콘 삽입 필요함 -->
+                <ul>
+                    <li><a class="active" href="#home">설문 게시판</a></li>
+                    <li><a href="#news">설문조사 생성</a></li>
+                    <li><a href="#contact">?</a></li>
+                    <li><a href="#about">프로필 페이지</a></li>
+                </ul>
+            </div>
+            <div class="menu3">
+                <!-- 구글 계정 프로필 페이지 + 디스코드 프로필 페이지 참조. -->
+
+                <div class="mini_container1"></div>
+                <div class="welcome"></div>
+                <p>회원 정보</p>
+                <div class="mini_container2">
+                    <div class="mini2 userinfotable">
+                        <ul>
+                            <li id="name"></li>
+                            <li id="email"></li>
+                            <li id="email_opt_in"></li>
+                        </ul>
+                    </div>
+                    <form action="" class="">
+                        <label for="newname">새로운 이름</label>
+                        <input type="text" />
+                        <label for="newname">새로운 이메일</label>
+                        <label for="newname">이메일 수신동의여부재설정</label>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div></div>
+        </footer>
+        <script src="../js/userinfo.js"></script>
+    </body>
+</html>
