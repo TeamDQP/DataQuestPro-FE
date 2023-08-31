@@ -1,4 +1,4 @@
-const BaseUrl = 'http://127.0.0.1:8000';
+const BaseUrl = 'http://15.164.56.233/api';
 const loginForm = document.getElementById('login-form');
 const signupButton = document.querySelector('.signup-btn');
 

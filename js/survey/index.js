@@ -17,5 +17,5 @@ function getParameterByName(name) {
 // 'id' 파라미터 값 가져오기
 const idParam = getParameterByName('id');
 
-const BaseUrl = 'http://127.0.0.1:8000';
+const BaseUrl = 'http://15.164.56.233/api';
 const surveyId = idParam;
