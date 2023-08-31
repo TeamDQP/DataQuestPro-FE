@@ -55,11 +55,21 @@ function generateSurveyCard(survey) {
                     
                     ${survey.is_done
                         ? '<a href="./survey_result.html?id=${survey.id}" class="btn btn-secondary">결과</a>'
-                        : `<a href="./survey_detail.html?id=${survey.id}" class="btn btn-primary">시작하기</a>`}
-                    
-                    <button class="btn btn-danger delete-btn" data-id="${survey.id}">삭제</button>
-                    <a href="./survey_edit.html?id=${survey.id}" class="btn btn-secondary">수정</a>
-                    <a href="./survey_result.html?id=${survey.id}" class="btn btn-secondary">결과</a>
+                        : 
+                        `
+                        <a href="./survey_detail.html?id=${survey.id}" class="btn btn-primary">시작하기</a>
+                        <a href="./survey_result.html?id=${survey.id}" class="btn btn-secondary">결과</a>
+                        `
+                    }
+                    ${survey.owner
+                        ? 
+                        ''
+                        : 
+                        `
+                        <button class="btn btn-danger delete-btn" data-id="${survey.id}">삭제</button>
+                        <a href="./survey_edit.html?id=${survey.id}" class="btn btn-secondary">수정</a>
+                        `
+                    }
                 </div>
             </div>
         </div>
@@ -70,6 +80,9 @@ function filterSurveysByCategory(categoryId) {
     surveyListContainer.innerHTML = ''; // Clear previous survey cards
     fetch(BaseUrl + '/surveys/survey/?category=' + categoryId, {
         method: 'GET',
+        headers: {
+            Authorization: `Bearer ${token}`, // Add the token to the request headers
+        },
     })
         .then(response => response.json())
         .then(data => {

@@ -223,6 +223,7 @@ async function handleFormSubmit(event) {
         const postData = {
             title: formData.get('title'),
             intro: formData.get('intro'),
+            is_done: formData.get('is_done'),
             questions: questionsData,
             category: formData.get('category'), // 카테고리 추가
             tags: selectedTags, // 선택한 태그 추가
