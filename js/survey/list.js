@@ -31,6 +31,9 @@ surveyListContainer.addEventListener('click', event => {
         if (confirm('설문조사를 삭제하시겠습니까?')) {
             fetch(BaseUrl + '/surveys/survey/delete/' + surveyId, {
                 method: 'POST',
+                headers: {
+                    Authorization: `Bearer ${token}`, // Add the token to the request headers
+                },
             })
                 .then(response => response.json())
                 .then(data => {
@@ -63,12 +66,12 @@ function generateSurveyCard(survey) {
                     }
                     ${survey.owner
                         ? 
-                        ''
-                        : 
                         `
                         <button class="btn btn-danger delete-btn" data-id="${survey.id}">삭제</button>
                         <a href="./survey_edit.html?id=${survey.id}" class="btn btn-secondary">수정</a>
                         `
+                        :
+                        '' 
                     }
                 </div>
             </div>
