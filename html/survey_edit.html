@@ -8,358 +8,69 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="./survey_list.html">로고</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">홈</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">서비스</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./profilepage.html">프로필</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="./survey_list.html">로고</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="#">홈</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">서비스</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">포트폴리오</a>
-            </li>
-        </ul>
-    </div>
-</nav>
-
-<main class="main_contents">
-    <div class="container">
-        <h1 class="text-center mb-4">새로운 설문조사 생성</h1>
-        <form id="surveyForm">
-            <div class="form-group">
-                <label for="title">제목</label>
-                <input type="text" class="form-control" id="title" name="title" required>
-            </div>
-            <div class="form-group">
-                <label for="intro">소개</label>
-                <textarea class="form-control" id="intro" name="intro" rows="3" required></textarea>
-            </div>
-            <div class="form-group">
-                <label for="categorySelect">카테고리</label>
-                <select class="form-control" id="categorySelect" name="category" required>
-                    <!-- 여기에 카테고리 옵션 요소가 동적으로 추가될 것입니다. -->
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="tagInput">태그 추가</label>
-                <input type="text" class="form-control" id="tagInput" placeholder="태그를 입력하세요">
-                <button type="button" id="addTagBtn" class="btn btn-secondary">태그 추가</button>
-            </div>
-            <div id="selectedTags">
-                <!-- 선택한 태그가 여기에 추가될 것입니다. -->
-            </div>
-            <div id="questionsContainer"></div>
-            <button type="button" id="addQuestionBtn" class="btn btn-success">질문 추가</button>
-            <button type="submit" class="btn btn-primary">수정하기</button>
-        </form>
-    </div>
-</main>
-
-<!-- 부트스트랩 JS 및 jQuery 링크 -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-<!-- Sortable 라이브러리 JS 링크 -->
-<script src="http://SortableJS.github.io/Sortable/Sortable.js"></script>
-
-
-<!-- 설문조사 생성 기능 스크립트 -->
-<script>
-    const BaseUrl = 'http://127.0.0.1:8000';
-    const surveyForm = document.getElementById('surveyForm');
-    const questionsContainer = document.getElementById('questionsContainer');
-    const addQuestionBtn = document.getElementById('addQuestionBtn');
-    const addTagBtn = document.getElementById('addTagBtn');
-    const tagInput = document.getElementById('tagInput');
-    const selectedTagsContainer = document.getElementById('selectedTags');
-
-    const currentUrl = window.location.href;
-    const surveyId = getParameterByName('id');
-
-    let questionCounter = 0;
-    let selectedTags = [];
-
-    Sortable.create(questionsContainer, {
-        animation: 150, // 드래그 애니메이션 지속 시간 (밀리초)
-    });
-
-    function getParameterByName(name) {
-        name = name.replace(/[\[\]]/g, '\\$&');
-        const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
-        const results = regex.exec(currentUrl);
-        
-        if (!results) return null;
-        if (!results[2]) return '';
-        
-        return decodeURIComponent(results[2].replace(/\+/g, ' '));
-    }
-
-    function fetchJSON(url) {
-        return fetch(url).then(response => response.json());
-    }
-
-    function createQuestionElement(questionCounter) {
-        const questionHtml = `
-            <div class="question">
+    <main class="main_contents">
+        <div class="container">
+            <h1 class="text-center mb-4">새로운 설문조사 생성</h1>
+            <form id="surveyForm">
                 <div class="form-group">
-                    <label for="question_text">질문 내용</label>
-                    <textarea class="form-control question_text" id="question_text" name="question_text" rows="2" required></textarea>
+                    <label for="title">제목</label>
+                    <input type="text" class="form-control" id="title" name="title" required>
                 </div>
                 <div class="form-group">
-                    <label for="question_type">질문 유형</label>
-                    <select class="form-control question_type" id="question_type" name="question_type" required>
-                        <option value="scale">객관식</option>
-                        <option value="open">서술형</option>
+                    <label for="intro">소개</label>
+                    <textarea class="form-control" id="intro" name="intro" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="categorySelect">카테고리</label>
+                    <select class="form-control" id="categorySelect" name="category" required>
+                        <!-- 여기에 카테고리 옵션 요소가 동적으로 추가될 것입니다. -->
                     </select>
                 </div>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input required" id="required" name="required">
-                    <label class="form-check-label" for="required">필수</label>
-                </div>
-                <div id="answers_${questionCounter}">
-                    <!-- 추가된 답변 필드가 여기에 동적으로 추가될 것입니다. -->
-                </div>
-            </div>
-        `;
-        const questionElement = document.createElement('div');
-        questionElement.innerHTML = questionHtml;
-
-        const addAnswerBtn = document.createElement('button');
-        addAnswerBtn.innerHTML = '답변 추가';
-        addAnswerBtn.className = 'btn btn-sm btn-secondary mt-2';
-        questionElement.appendChild(addAnswerBtn);
-
-        const answersContainer = document.getElementById(`answers_${questionCounter}`);
-        let answerCounter = 1;
-
-        addAnswerBtn.addEventListener('click', () => {
-            handleAddAnswerClick(questionCounter, answerCounter);
-        });
-
-        return questionElement;
-    }
-
-    function updateSelectedTags() {
-        var selectedTagsContainer = document.getElementById('selectedTags');
-        selectedTagsContainer.innerHTML = '';
-
-        selectedTags.forEach(function(tag) {
-            var tagElement = document.createElement('span');
-            tagElement.classList.add('badge', 'badge-primary', 'mr-2');
-            tagElement.textContent = tag;
-
-            selectedTagsContainer.appendChild(tagElement);
-        });
-    }
-
-    async function fetchSurveyDetails() {
-        try {
-            const surveyData = await fetchJSON(`${BaseUrl}/surveys/survey/update/${surveyId}`);
-
-            const titleInput = document.getElementById('title');
-            const introTextarea = document.getElementById('intro');
-            const categorySelect = document.getElementById('categorySelect');
-
-            titleInput.value = surveyData.survey.title;
-            introTextarea.value = surveyData.survey.intro;
-
-            surveyData.categories.forEach(category => {
-                const option = document.createElement('option');
-                option.value = category.id;
-                option.textContent = category.name;
-                if (category.id === surveyData.survey.category) {
-                    option.selected = true;
-                }
-                categorySelect.appendChild(option);
-            });
-            surveyData.tags.forEach(tag =>{
-                selectedTags.push(tag.name);
-                updateSelectedTags();
-            })
-            // Render survey details
-
-            surveyData.questions.forEach((question, index) => {
-                const questionElement = createQuestionElement(index);
-                // Set question text, type, and required
-                const questionTextElement = questionElement.querySelector('.question_text');
-                questionTextElement.value = question.question_text;
-
-                const questionTypeElement = questionElement.querySelector('.question_type');
-                questionTypeElement.value = question.type;
-
-                const requiredCheckbox = questionElement.querySelector('.required');
-                requiredCheckbox.checked = question.is_required;
-
-                // Append answer options
-                const answersContainer = questionElement.querySelector(`#answers_${index}`);
-                question.answer_options.forEach((answer, answerIndex) => {
-                    const answerHtml = `
-                        <div class="form-group">
-                            <label for="answer_${index}_${answerIndex}">답변 내용</label>
-                            <input type="text" class="form-control answers" id="answer_${index}_${answerIndex}" name="answer_${index}_${answerIndex}" value="${answer}" required>
-                        </div>
-                    `;
-                    const answerElement = document.createElement('div');
-                    answerElement.innerHTML = answerHtml;
-                    answersContainer.appendChild(answerElement);
-                    addDeleteAnswerButton(answerElement, questionCounter);
-                });
-
-                questionCounter = index + 1;
-
-                // Append the entire question element to the surveyQuestionsContainer
-                addDeleteQuestionButton(questionElement);
-                questionsContainer.appendChild(questionElement);
-            });
-
-        } catch (error) {
-            console.error('Error fetching survey details:', error);
-        }
-    }
-
-    function addDeleteQuestionButton(questionElement) {
-        const deleteQuestionBtn = document.createElement('button');
-        deleteQuestionBtn.innerHTML = '질문 삭제';
-        deleteQuestionBtn.className = 'btn btn-sm btn-danger mt-2';
-        questionElement.appendChild(deleteQuestionBtn);
-
-        deleteQuestionBtn.addEventListener('click', () => {
-            questionsContainer.removeChild(questionElement);
-        });
-    }
-
-    function addDeleteAnswerButton(answerElement, questionCounter) {
-        const deleteAnswerBtn = document.createElement('button');
-        deleteAnswerBtn.innerHTML = '답변 삭제';
-        deleteAnswerBtn.className = 'btn btn-sm btn-danger ml-2';
-        answerElement.appendChild(deleteAnswerBtn);
-
-        deleteAnswerBtn.addEventListener('click', () => {
-            const answersContainer = document.getElementById(`answers_${questionCounter}`);
-            answersContainer.removeChild(answerElement);
-        });
-    }
-
-    function handleAddAnswerClick(questionCounter, answerCounter) {
-        const currentQuestionCounter = questionCounter; // 이전 질문의 questionCounter 값
-        const currentAnswersContainer = document.getElementById(`answers_${currentQuestionCounter}`);
-
-        if (currentAnswersContainer) {
-            const answerHtml = `
                 <div class="form-group">
-                    <label for="answer_${currentQuestionCounter}_${answerCounter}">답변 내용</label>
-                    <input type="text" class="form-control answers" id="answer" name="answer" required>
+                    <label for="tagInput">태그 추가</label>
+                    <input type="text" class="form-control" id="tagInput" placeholder="태그를 입력하세요">
+                    <button type="button" id="addTagBtn" class="btn btn-secondary">태그 추가</button>
                 </div>
-            `;
+                <div id="selectedTags">
+                    <!-- 선택한 태그가 여기에 추가될 것입니다. -->
+                </div>
+                <div id="questionsContainer"></div>
+                <button type="button" id="addQuestionBtn" class="btn btn-success">질문 추가</button>
+                <button type="submit" class="btn btn-primary">수정하기</button>
+            </form>
+        </div>
+    </main>
 
-            const answerElement = document.createElement('div');
-            answerElement.innerHTML = answerHtml;
-            currentAnswersContainer.appendChild(answerElement);
+    <!-- 부트스트랩 JS 및 jQuery 링크 -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-            addDeleteAnswerButton(answerElement, currentQuestionCounter);
-            answerCounter++;
-        }
-    }
+    <!-- Sortable 라이브러리 JS 링크 -->
+    <script src="http://SortableJS.github.io/Sortable/Sortable.js"></script>
 
-    function handleAddQuestionClick() {
-        const questionElement = createQuestionElement(questionCounter);
-        questionsContainer.appendChild(questionElement);
-
-        addDeleteQuestionButton(questionElement);
-        questionCounter++;
-    }
-
-    async function handleFormSubmit(event) {
-        try {
-            // 질문 컨테이너 내의 질문 요소들을 선택
-            const sortedQuestionElements = questionsContainer.querySelectorAll('.question');
-            const questionsData = [];
-
-            // 질문 데이터 수집
-            sortedQuestionElements.forEach((questionElement, index) => {
-                const questionData = {
-                    question_text: questionElement.querySelector('.question_text').value,
-                    type: questionElement.querySelector('.question_type').value,
-                    is_required: questionElement.querySelector('.required').checked,
-                    qnum:index,
-                    answers: [],
-                };
-
-                // 답변 데이터 수집
-                const answerInputs = questionElement.querySelectorAll('.answers');
-                answerInputs.forEach(answerInput => {
-                    questionData.answers.push(answerInput.value);
-                });
-
-                questionsData.push(questionData);
-            });
-
-            // 폼 데이터 수집
-            const formData = new FormData(surveyForm);
-            
-            // 포스트 데이터 생성
-            const postData = {
-                title: formData.get('title'),
-                intro: formData.get('intro'),
-                questions: questionsData,
-                category: formData.get('category'), // 카테고리 추가
-                tags: selectedTags, // 선택한 태그 추가
-            };
-            // 서버로 데이터 전송
-            const response = await fetch(BaseUrl + `/surveys/survey/update/${surveyId}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(postData)
-            });
-
-            const data = await response.json();
-            
-            // 생성 완료 시 처리 로직 추가
-
-        } catch (error) {
-            console.error('Error creating survey:', error);
-        }
-    }
-
-    function handleAddTagClick() {
-        var tagInput = document.getElementById('tagInput');
-        var tag = tagInput.value.trim();
-
-        if (tag) {
-            // 이미 추가된 태그인지 확인
-            if (!selectedTags.includes(tag)) {
-                selectedTags.push(tag);
-                updateSelectedTags();
-            }
-
-            tagInput.value = ''; // 입력 필드 비우기
-        }
-    }
-
-    // Attach event listeners
-    addQuestionBtn.addEventListener('click', () => {
-        handleAddQuestionClick()
-    });
-    surveyForm.addEventListener('submit', async (event) => {
-        event.preventDefault();
-        handleFormSubmit(event)
-    });
-    addTagBtn.addEventListener('click', () => {
-        handleAddTagClick()
-    });
-
-    // Fetch survey details on page load
-    fetchSurveyDetails();
-</script>
+    <!-- 설문조사-->
+    <script src="../js/survey/index.js"></script>
+    <script src="../js/survey/edit.js"></script>
 </body>
 </html>

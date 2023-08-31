@@ -24,7 +24,7 @@ loginForm.addEventListener('submit', (event) => {
             password,
         }),
     })
-        .then((response) => {
+    .then((response) => {
             return response.json();
         })
         .then((data) => {
@@ -38,7 +38,7 @@ loginForm.addEventListener('submit', (event) => {
         .catch((error) => {
             console.error('Error:', error);
             alert(`로그인 실패: ${error.message}`);
-        });
+    });
 });
 
 // 회원가입버튼누르면 signup으로 이동
