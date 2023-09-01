@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+            crossorigin="anonymous"
+        />
+        <!-- google font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Anton&family=Black+Han+Sans&display=swap"
+            rel="stylesheet"
+        />
+        <!-- css 연결 -->
+        <link rel="stylesheet" href="../css/signup.css" />
+        <title>회원가입</title>
+    </head>
+    <body>
+        <main
+            class="form-signin d-flex justify-content-center align-items-center"
+            style="height: 100vh"
+        >
+            <form method="post" action="/signup/" id="signup-form">
+                <h1 class="mb-3 fw-normal custom-h1 mb-5">회원가입</h1>
+                <div class="form-floating">
+                    <input
+                        type="text"
+                        class="form-control custom-input"
+                        id="floatingInput"
+                        placeholder="name@example.com"
+                        name="name"
+                    />
+                    <label for="floatingInput">이름</label>
+                </div>
+                <div class="form-floating">
+                    <input
+                        type="email"
+                        class="form-control custom-input"
+                        id="floatingInput"
+                        placeholder="name@example.com"
+                        name="email"
+                    />
+                    <label for="floatingInput">이메일</label>
+                </div>
+                <div class="form-floating">
+                    <input
+                        type="password"
+                        class="form-control custom-input"
+                        id="password"
+                        placeholder="Password"
+                        name="password"
+                    />
+                    <label for="password">비밀번호</label>
+                </div>
+                <div class="form-floating">
+                    <input
+                        type="password"
+                        class="form-control custom-input"
+                        id="password_confirm"
+                        placeholder="Password"
+                    />
+                    <label for="password_confirm">비밀번호 확인</label>
+                </div>
+
+                <div class="email_opt_in mb-3">
+                    이메일 수신 동의
+                    <input type="radio" name="email_opt_in" value="true" />동의
+                    <input
+                        type="radio"
+                        name="email_opt_in"
+                        value="false"
+                    />비동의
+                </div>
+                <button
+                    class="btn btn-primary signupbutton"
+                    type="submit"
+                    id="submitBtn"
+                >
+                    회원가입
+                </button>
+            </form>
+        </main>
+
+        <!-- bootstrap -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+            crossorigin="anonymous"
+        ></script>
+        <!-- js 연결 -->
+        <script src="../js/signup.js"></script>
+    </body>
+</html>

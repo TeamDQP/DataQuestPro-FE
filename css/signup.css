@@ -1,0 +1,62 @@
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f8ff;
+    margin: 0;
+}
+
+.custom-h1 {
+    font-family: 'Anton', sans-serif;
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 5rem;
+    color: #262699;
+}
+
+.input-container {
+    position: relative;
+    display: flex;
+}
+
+.nickname-input {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.duplicate-check-btn {
+    margin-left: auto;
+    white-space: nowrap;
+}
+
+.form-control {
+    min-width: 300px;
+}
+
+.form-signin {
+    width: 450px;
+    min-width: 300px;
+}
+
+.custom-input {
+    width: 450px;
+    margin-bottom: 20px;
+}
+
+.signupbutton {
+    display: flex;
+    flex-direction: column; /* 내부 요소들을 세로 방향으로 배열 */
+    align-items: flex-end; /* 버튼 등 내부 요소들을 오른쪽으로 정렬 */
+}
+
+.email_opt_in {
+    font-size: large;
+}

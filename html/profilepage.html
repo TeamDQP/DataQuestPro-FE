@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>DataQuestPro</title>
+        <link rel="stylesheet" type="text/css" href="../css/profilepage.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        />
+        <!-- Axios via CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+            crossorigin="anonymous"
+        />
+        <!-- google font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Anton&family=Black+Han+Sans&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body onload="getProfile()">
+        <div class="top_container">
+            <div class="menu1">
+                <div class="left">
+                    <a href="./survey_list.html"
+                        ><img src="../img/DQP2.png" alt="logo" width="150px"
+                    /></a>
+                    <div class="search"></div>
+                </div>
+                <div class="right">
+                    <a href=""><p>뒤로가기</p></a>
+                </div>
+            </div>
+        </div>
+        <div class="bottom_container">
+            <div class="menu2"></div>
+            <div class="menu3">
+                <p>프로필 페이지</p>
+                <div class="mini_container1">
+                    <div class="mini1"></div>
+                    <a href="./profile_edit.html">수정</a>
+                </div>
+                <div class="welcome">
+                    <p id="email">님 환영합니다</p>
+                </div>
+                <p>닉네임</p>
+                <div class="mini_container3">
+                    <p class="nickname">본인 닉네임</p>
+                </div>
+                <div class="logout"><button>로그아웃</button></div>
+            </div>
+            <div class="menu4"></div>
+        </div>
+        <footer>
+            <div></div>
+        </footer>
+        <script src="../js/profile.js"></script>
+    </body>
+</html>
