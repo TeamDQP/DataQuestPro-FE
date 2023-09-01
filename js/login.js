@@ -30,6 +30,7 @@ loginForm.addEventListener('submit', (event) => {
         .then((data) => {
             if (data.access && data.access !== 'undefined') {
                 localStorage.setItem('token', data.access);
+                localStorage.setItem('refresh', data.refresh);
                 window.location.href = './survey_list.html';
             } else {
                 alert('로그인 실패: 잘못된 이메일 또는 비밀번호');
