@@ -19,18 +19,20 @@
                     <p><img src="" alt="logo" width="100px" /></p>
                     <div class="search">
                         <i class="fa-solid fa-magnifying-glass fa-2x"></i>
-                        <input class="input" type="text" placeholder="검색" />
+                        <input
+                            class="search-input"
+                            type="text"
+                            placeholder="검색"
+                        />
                     </div>
                 </div>
                 <div class="right">
                     <p><i class="fa-regular fa-user fa-xl"></i></p>
-                    <!-- 계정 아이콘 누르면 프로필 페이지로 이동 가능하게 -->
                 </div>
             </div>
         </div>
         <div class="bottom_container">
             <div class="menu2">
-                <!-- 각 메뉴마다 아이콘 삽입 필요함 -->
                 <ul>
                     <li><a class="active" href="#home">설문 게시판</a></li>
                     <li><a href="#news">설문조사 생성</a></li>
@@ -38,56 +40,34 @@
                     <li><a href="#about">프로필 페이지</a></li>
                 </ul>
             </div>
-            <div class="menu3">
-                <!-- 구글 계정 프로필 페이지 + 디스코드 프로필 페이지 참조. -->
-
-                <div class="mini_container1"></div>
-                <div class="welcome"></div>
-                <p>회원 정보</p>
-                <div class="mini_container2">
-                    <div class="mini2 userinfotable">
-                        <ul>
-                            <li id="name"></li>
-                            <li id="email"></li>
-                            <li id="email_opt_in"></li>
-                        </ul>
-                    </div>
-                    <form action="" class="newuserinfoinput">
-                        <label for="newname">새로운 이름</label>
-                        <input type="text" name="newname" id="newname" />
-                        <label for="newpassword">새로운 비밀번호</label>
-                        <input
-                            type="password"
-                            name="newpassword"
-                            id="newpassword"
-                        />
-                        <label for="newpassword-confirm"
-                            >새로운 비밀번호 확인</label
-                        >
-                        <input
-                            type="password"
-                            id="newpassword-confirm"
-                            name="newpassword-confirm"
-                        />
-                        <label for="newemail">새로운 이메일</label>
-                        <input type="email" name="newemail" id="newemail" />
-                        <div class="email_opt_in_setup">
-                            이메일 수신 동의 재설정
-                            <input
-                                type="radio"
-                                name="email_opt_in_setup"
-                                value="true"
-                            />동의
-                            <input
-                                type="radio"
-                                name="email_opt_in_setup"
-                                value="false"
-                            />비동의
-                        </div>
-                        <button type="submit">수정 완료</button>
-                    </form>
+            <form action="" class="newuserinfoinput">
+                <label for="newname">새로운 이름</label>
+                <input type="text" name="newname" id="newname" />
+                <label for="newpassword">새로운 비밀번호</label>
+                <input type="password" name="newpassword" id="newpassword" />
+                <label for="newpassword-confirm">새로운 비밀번호 확인</label>
+                <input
+                    type="password"
+                    id="newpassword-confirm"
+                    name="newpassword-confirm"
+                />
+                <label for="newemail">새로운 이메일</label>
+                <input type="email" name="newemail" id="newemail" />
+                <div class="email_opt_in_setup">
+                    이메일 수신 동의 재설정
+                    <input
+                        type="radio"
+                        name="email_opt_in_setup"
+                        value="true"
+                    />동의
+                    <input
+                        type="radio"
+                        name="email_opt_in_setup"
+                        value="false"
+                    />비동의
                 </div>
-            </div>
+                <button type="submit">수정 완료</button>
+            </form>
         </div>
         <footer>
             <div></div>

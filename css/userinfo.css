@@ -1,0 +1,44 @@
+* {
+    font-family: 'Anton', sans-serif;
+    font-family: 'Black Han Sans', sans-serif;
+    font-weight: lighter;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.logo {
+    margin-left: 20px;
+}
+
+.search {
+    padding-top: 20px;
+}
+
+.search-input {
+    width: 500px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.profileicon {
+    padding-top: 25px;
+    padding-right: 25px;
+}
+
+.infobox {
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 100px;
+    font-size: 2.5rem;
+}
+
+.userinfoeditbtn {
+    padding: 5px;
+    display: flex;
+    justify-content: flex-end;
+}
