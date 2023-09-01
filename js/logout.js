@@ -1,4 +1,3 @@
-const BaseUrl = "http://15.164.56.233";
 const signupButton = document.querySelector(".logout-btn");
 
 signupButton.addEventListener("click", function () {
