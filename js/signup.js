@@ -1,4 +1,4 @@
-const BaseUrl = 'http://127.0.0.1:8000';
+const BaseUrl = 'http://15.164.56.233';
 const signupForm = document.getElementById('signup-form');
 
 signupForm.addEventListener('submit', function (event) {

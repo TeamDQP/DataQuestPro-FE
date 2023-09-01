@@ -80,10 +80,16 @@ async function fetchSurveyDetails() {
         const surveyData = await response.json();
         const titleInput = document.getElementById('title');
         const introTextarea = document.getElementById('intro');
+        const IsDoneSelect = document.getElementById('IsDoneSelect');
         const categorySelect = document.getElementById('categorySelect');
+        const enddated = document.getElementById('enddatedAt');
 
         titleInput.value = surveyData.survey.title;
         introTextarea.value = surveyData.survey.intro;
+        IsDoneSelect.value = surveyData.survey.is_done;
+        const regex = /^(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}).*/;
+        const parsedDateTime = surveyData.survey.enddated_at.match(regex)[1];
+        enddated.value = parsedDateTime;
 
         surveyData.categories.forEach(category => {
             const option = document.createElement('option');
@@ -223,6 +229,8 @@ async function handleFormSubmit(event) {
         const postData = {
             title: formData.get('title'),
             intro: formData.get('intro'),
+            is_done: formData.get('is_done'),
+            enddated_at: formData.get('enddated_at'),
             questions: questionsData,
             category: formData.get('category'), // 카테고리 추가
             tags: selectedTags, // 선택한 태그 추가
