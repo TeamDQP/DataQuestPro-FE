@@ -39,7 +39,7 @@ async function fetchSurveyDetails() {
                                             <br>
                                         `).join('')
                                         : question.type === 'open'
-                                        ? `<textarea class="answer-textarea" name="question${question.id}" ${question.is_required ? 'required' : ''}>${question.user_answer_text}</textarea>`
+                                        ? `<textarea class="answer-textarea" name="question${question.id}" ${question.is_required ? 'required' : ''}>${question.user_answer_text? question.user_answer_text:''}</textarea>`
                                         : ''
                                 }
                             </div>
