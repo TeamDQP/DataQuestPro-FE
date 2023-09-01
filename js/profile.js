@@ -13,9 +13,6 @@ function getProfile() {
         const username = response.data.username
         const profileimage = response.data.profileimage
 
-        console.log(username)
-        console.log(profileimage)
-
         // 이미지 요소 생성하여 가져온 profileimage 주소 넣어줌
         const imgItem = document.createElement("img");
         imgItem.classList.add("thumbnail");

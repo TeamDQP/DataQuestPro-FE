@@ -4,62 +4,72 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>DataQuestPro</title>
-        <link rel="stylesheet" type="text/css" href="../css/profilepage.css" />
+        <!-- css파일 연결 -->
+        <link rel="stylesheet" type="text/css" href="../css/userinfo.css" />
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         />
         <!-- Axios via CDN -->
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <!-- bootstrap -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+            crossorigin="anonymous"
+        />
+        <!-- google font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Anton&family=Black+Han+Sans&display=swap"
+            rel="stylesheet"
+        />
     </head>
     <body onload="getUserinfo()">
-        <div class="top_container">
-            <div class="menu1">
-                <div class="left">
-                    <p><img src="" alt="logo" width="100px" /></p>
-                    <div class="search">
-                        <i class="fa-solid fa-magnifying-glass fa-2x"></i>
-                        <input class="input" type="text" placeholder="검색" />
-                    </div>
+        <header>
+            <div class="nav">
+                <div class="logo">
+                    <img src="../img/DQP2.png" alt="logo" width="100px" />
                 </div>
-                <div class="right">
-                    <p><i class="fa-regular fa-user fa-xl"></i></p>
-                    <!-- 계정 아이콘 누르면 프로필 페이지로 이동 가능하게 -->
+                <div class="search">
+                    <i class="fa-solid fa-magnifying-glass fa-2x"></i>
+                    <input
+                        class="search-input"
+                        type="text"
+                        placeholder="검색"
+                    />
+                </div>
+                <div class="profileicon">
+                    <i class="fa-regular fa-user fa-2xl"></i>
                 </div>
             </div>
-        </div>
-        <div class="bottom_container">
-            <div class="menu2">
-                <!-- 각 메뉴마다 아이콘 삽입 필요함 -->
-                <ul>
-                    <li><a class="active" href="#home">설문 게시판</a></li>
-                    <li><a href="#news">설문조사 생성</a></li>
-                    <li><a href="#contact">?</a></li>
-                    <li><a href="#about">프로필 페이지</a></li>
+        </header>
+
+        <main class="main container">
+            <div class="infobox">
+                <p class="">회원 정보</p>
+
+                <ul class="info">
+                    이름
+                    <li id="name"></li>
+                    이메일
+                    <li id="email"></li>
+                    이메일 수신 동의 여부
+                    <li id="email_opt_in"></li>
                 </ul>
             </div>
-            <div class="menu3">
-                <!-- 구글 계정 프로필 페이지 + 디스코드 프로필 페이지 참조. -->
-
-                <div class="mini_container1">
-                    <a href="./userinfo_update.html">회원 정보 수정</a>
-                </div>
-                <div class="welcome"></div>
-                <p>회원 정보</p>
-                <div class="mini_container2">
-                    <div class="mini2 userinfotable">
-                        <ul>
-                            <li id="name"></li>
-                            <li id="email"></li>
-                            <li id="email_opt_in"></li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="userinfoeditbtn">
+                <button style="border-radius: 10px" ;>
+                    <a
+                        style="text-decoration: none"
+                        href="./userinfo_update.html"
+                        >회원 정보 수정</a
+                    >
+                </button>
             </div>
-        </div>
-        <footer>
-            <div></div>
-        </footer>
+        </main>
         <script src="../js/userinfo.js"></script>
     </body>
 </html>
