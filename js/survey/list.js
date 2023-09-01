@@ -55,10 +55,16 @@ function generateSurveyCard(survey) {
                     <p class="card-text">작성자: ${survey.user}</p>
                     <p class="card-text">카테고리: ${survey.category}</p>
                     <p class="card-text">태그: ${survey.tags.join(', ')}</p>
-                    
                     ${survey.is_done
-                        ? '<a href="./survey_result.html?id=${survey.id}" class="btn btn-secondary">결과</a>'
-                        : 
+                        ? `<a href="./survey_result.html?id=${survey.id}" class="btn btn-secondary">결과</a>`
+                        :
+                        survey.useranswer
+                        ?
+                        `
+                        <a href="./survey_detail.html?id=${survey.id}" class="btn btn-primary">답변 수정</a>
+                        <a href="./survey_result.html?id=${survey.id}" class="btn btn-secondary">결과</a>
+                        `
+                        :
                         `
                         <a href="./survey_detail.html?id=${survey.id}" class="btn btn-primary">시작하기</a>
                         <a href="./survey_result.html?id=${survey.id}" class="btn btn-secondary">결과</a>

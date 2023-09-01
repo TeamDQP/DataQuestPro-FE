@@ -14,9 +14,9 @@ function addDeleteQuestionButton(questionElement) {
     deleteQuestionBtn.innerHTML = '질문 삭제';
     deleteQuestionBtn.className = 'btn btn-sm btn-danger mt-2';
     questionElement.appendChild(deleteQuestionBtn);
-
     deleteQuestionBtn.addEventListener('click', () => {
         questionsContainer.removeChild(questionElement);
+        questionCounter--;
     });
 }
 
@@ -61,15 +61,10 @@ addQuestionBtn.addEventListener('click', () => {
     const addAnswerBtn = document.createElement('button');
     addAnswerBtn.innerHTML = '답변 추가';
     addAnswerBtn.className = 'btn btn-sm btn-secondary mt-2';
-    questionElement.appendChild(addAnswerBtn);
+    addAnswerBtn.setAttribute('data-value', questionCounter);
 
-    questionsContainer.appendChild(questionElement);
-
-    let answerCounter = 1;
-
-    const answersContainer = document.getElementById(`answers_${questionCounter}`);
-    addAnswerBtn.addEventListener('click', () => {
-        const currentQuestionCounter = questionCounter - 1; // 이전 질문의 questionCounter 값
+    addAnswerBtn.addEventListener('click', (event) => {
+        const currentQuestionCounter = event.target.getAttribute("data-value"); // 이전 질문의 questionCounter 값
         const currentAnswersContainer = document.getElementById(`answers_${currentQuestionCounter}`);
         
         if (currentAnswersContainer) {
@@ -88,6 +83,13 @@ addQuestionBtn.addEventListener('click', () => {
             answerCounter++;
         }
     });
+
+    questionElement.appendChild(addAnswerBtn);
+    questionsContainer.appendChild(questionElement);
+
+    let answerCounter = 1;
+
+    const answersContainer = document.getElementById(`answers_${questionCounter}`);
     addDeleteQuestionButton(questionElement);
     questionCounter++;
 });
