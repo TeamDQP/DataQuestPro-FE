@@ -1,3 +1,4 @@
+const BaseUrl = 'http://15.164.56.233';
 const token = localStorage.getItem('token');
 
 const imgForm = document.getElementById('profile-img-form');
@@ -9,7 +10,7 @@ imgForm.addEventListener('submit', function (event) {
     // formData.append('profileimage','')
     // Make API call using Axios
     axios
-        .post('http://127.0.0.1:8000/user/profile/update/', formData, {
+        .post(BaseUrl + '/user/profile/update/', formData, {
             headers: {
                 Authorization: `Bearer ${token}`, // Add the token to the request headers
             },
@@ -24,7 +25,7 @@ imgForm.addEventListener('submit', function (event) {
 
 function getProfile() {
     axios
-        .get('http://localhost:8000/user/profile/update/', {
+        .get(BaseUrl + '/user/profile/update/', {
             headers: {
                 Authorization: `Bearer ${token}`, // Add the token to the request headers
             },
@@ -41,7 +42,7 @@ function getProfile() {
             const imgItem = document.createElement('img');
             imgItem.classList.add('thumbnail');
             imgItem.setAttribute('alt', 'image unavailable');
-            imgItem.setAttribute('src', `http://127.0.0.1:8000${profileimage}`);
+            imgItem.setAttribute('src', `${BaseUrl}${profileimage}`);
             const image = document.querySelector('.display-img');
             image.append(imgItem);
 

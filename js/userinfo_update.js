@@ -1,3 +1,4 @@
+const BaseUrl = 'http://15.164.56.233';
 const token = localStorage.getItem('token');
 
 if (!token) {
@@ -34,7 +35,7 @@ userInfoForm.addEventListener('submit', function (event) {
     formData.append('email_opt_in', email_opt_in_setup);
 
     axios
-        .post('http://localhost:8000/user/update/', formData, {
+        .post(BaseUrl + '/user/update/', formData, {
             headers: { Authorization: `Bearer ${token}` },
         })
         .then((response) => {
