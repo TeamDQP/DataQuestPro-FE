@@ -1,4 +1,4 @@
-const BaseUrl = 'http://15.164.56.233/api';
+const BaseUrl = 'http://15.164.56.233';
 const token = localStorage.getItem('token');
 
 if (!token) {
