@@ -3,7 +3,7 @@ const signupButton = document.querySelector(".logout-btn");
 signupButton.addEventListener("click", function () {
     const token = localStorage.getItem("token");
     axios
-        .get(BaseUrl + "/user/logout/", {
+        .post(BaseUrl + "/user/logout/", {
             headers: {
                 Authorization: `Bearer ${token}`, // Add the token to the request headers
             },
